@@ -9,7 +9,7 @@ const server = http.createServer(app);
 // to load some data or perform some actions before our server actually starts responding to the user
 async function startServer() {
   await loadPlanetsData();
-
+  
   server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
   });
