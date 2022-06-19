@@ -7,6 +7,8 @@
     "nodemon": "^2.0.16"
   },
   "scripts": {
+    "test": "jest",
+    "test-watch": "jest --watch",
     "start": "node src/server.js",
     "watch": "nodemon src/server.js"
   },
@@ -16,5 +18,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "NASA Mission Control API"
+  "description": "NASA Mission Control API",
+  "devDependencies": {
+    "jest": "^28.1.1"
+  }
 }
