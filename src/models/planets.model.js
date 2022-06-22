@@ -2,6 +2,8 @@ const { parse } = require("csv-parse");
 const path = require("path");
 const fs = require("fs");
 
+const { Planet } = require("./planets.mongo");
+
 const isHabitablePlanet = (planet) => {
   return (
     planet["koi_disposition"] === "CONFIRMED" &&
