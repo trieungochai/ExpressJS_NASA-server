@@ -7,6 +7,5 @@ const planetSchema = new mongoose.Schema({
   },
 });
 
-const Planet = mongoose.model("Planet", planetSchema);
-
-module.exports = { Planet };
+// Connect planetSchema with the "planets" collection
+module.exports = mongoose.model("Planet", planetSchema);
