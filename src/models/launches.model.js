@@ -17,8 +17,8 @@ const launch = {
 
 saveLaunch(launch);
 
-function getAllLaunches() {
-  return Array.from(launches.values());
+async function getAllLaunches() {
+  return await launchesDatabase.find({}, { _id: 0, _v: 0 });
 }
 
 async function saveLaunch(launch) {
