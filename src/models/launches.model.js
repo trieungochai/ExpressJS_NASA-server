@@ -5,8 +5,6 @@ const DEFAULT_FLIGHT_NUMBER = 100;
 
 const launches = new Map();
 
-let latestFlightNumber = 100;
-
 const launch = {
   flightNumber: 100,
   launchDate: new Date("December 25, 2030"),
@@ -52,17 +50,17 @@ async function saveLaunch(launch) {
   );
 }
 
-function addNewLaunch(launch) {
-  latestFlightNumber++;
-  launches.set(
-    latestFlightNumber,
-    Object.assign(launch, {
-      success: true,
-      upcoming: true,
-      customer: ["ZTM", "NASA"],
-      flightNumber: latestFlightNumber,
-    })
-  );
+async function scheduleNewLaunch(launch) {
+  const newFlightNumber = (await getLatestFlightNumber()) + 1;
+
+  const newLaunch = Object.assign(launch, {
+    success: true,
+    upcoming: true,
+    customer: ["ZTM", "NASA"],
+    flightNumber: newFlightNumber,
+  });
+
+  await saveLaunch(newLaunch);
 }
 
 function existsLaunchWithId(launchId) {
@@ -79,7 +77,7 @@ function abortLaunchById(launchId) {
 
 module.exports = {
   getAllLaunches,
-  addNewLaunch,
+  scheduleNewLaunch,
   existsLaunchWithId,
   abortLaunchById,
 };
